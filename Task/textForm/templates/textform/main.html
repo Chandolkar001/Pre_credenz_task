@@ -10,26 +10,71 @@
 </head>
 <body>
 <h1>Main Page</h1>
+
 	{% if user.is_authenticated %}
 	    <h4>You have logged in as: {{ user.username }}</h4>
 		<a href="{% url 'logout' %}">
 			<button type="submit">Logout</button>
 		</a>
 		<form method="post">
+			{% csrf_token %}
 			<div style="margin: 20px;">
 				<ul> 
-				  {% for i in choice %}
-				  <a><input type="radio" name="choice" >Extract no > 100</a>
-				  <a><input type="radio" name="choice" >Extract Date (yyyy-mm-dd)</a>
-				  <a><input type="radio" name="choice" >Extract string stored in ' '</a><br><br>
-				  <a><input type="radio" name="choice" >IP address validator</a>
-				  <a><input type="radio" name="choice">Mac address validator</a>
-				  <a><input type="radio" name="choice" >camelCase to snake_case</a>
+				  <a><input type="radio" name="choice" value="1" id="1" >Extract no > 100</a>
+				  <a><input type="radio" name="choice" value="2" id="2">Extract Date (yyyy-mm-dd)</a>
+				  <a><input type="radio" name="choice" value="3" id="3">Extract string stored in ' '</a><br><br>
+				  <a><input type="radio" name="choice" value="4" id="4">IP address validator</a>
+				  <a><input type="radio" name="choice" value="5" id="5">Mac address validator</a>
+				  <a><input type="radio" name="choice" value="6" id="6">camelCase to snake_case</a>
 				</ul>
 				<textarea name="userinput" id="userinput" cols="50" rows="10" style="margin-left: 60px;"></textarea><br>
 				<input type = "submit" value = "Submit" style="margin-left: 200px;">
 				</div>
 		</form>
+		<div style="background-color: antiquewhite; height: 400px; width: 400px;">
+           {% if '1' in option %}
+		      <h4>option 1</h4>
+		      {% for i in linknum %}
+              <p>{{i}}</p>
+			  
+              {% endfor %}
+		   {% endif %}
+		   {% if '2' in option %}
+		      <h4>option 2</h4>
+		      {% for i in linknum %}
+		      <p>
+				  {% for j in i %}
+				   <p style="display: inline;">{{j}}/</p>
+				  {% endfor %}
+			  </p>
+			  
+		      {% endfor %}
+		   {% endif %}
+		   {% if '3' in option %}
+		      <h4>option 3</h4>
+		      {% for i in linknum %}
+              <p>{{i}}</p>
+			  
+              {% endfor %}
+		   {% endif %}
+		   {% if '4' in option %}
+		      <h4>option 4</h4>
+              <p>{{linknum}}</p>
+		   {% endif %}
+		   {% if '5' in option %}
+		      <h4>option 5</h4>
+		      <p>{{linknum}}</p>
+		   {% endif %}
+		   {% if '6' in option %}
+		      <h4>option 6</h4>
+		      {% for i in linknum %}
+			     {% for j in i %}
+                 <p style="display: inline;">{{j}}</p>
+			     {% endfor %}
+              {% endfor %}
+		   {% endif %}
+			
+		</div>
 	{% else %}
 	    <p>You have not logged in. Please login in!!</p>
 		<a href="{% url 'login' %}">
