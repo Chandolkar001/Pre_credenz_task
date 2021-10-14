@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sign-up page</title>
+</head>
+<body>
+	<form method="POST">
+
+		{% csrf_token %}
+
+		<h1> Sign-up form</h1>
+
+		{% if messages %}
+		    {% for message in messages %}
+			    <br>{{message}}</br>
+				<br>
+				<br>
+			{% endfor %}
+		{% endif %}
+
+		<div>
+			<label for="username">Enter username</label>
+			<input type="text" id="username" name="username">
+		</div>
+
+		<br>
+        
+		<div>
+			<label for="email">Enter email ID</label>
+			<input type="text" id="email" name="email">
+		</div>
+
+        <br>
+
+		<div>
+			<label for="pass1">Enter Password: </label>
+			<input type="password" id="pass1" name="password1">
+		</div>
+
+		<br>
+
+		<div>
+			<label for="pass2">Confirm password:  </label>
+			<input type="password" id="pass2" name="password2">
+		</div>
+        
+		<br>
+
+        <button type="submit">Sign up</button>
+	</form>
+
+	<div>
+		<a href="{% url 'login' %}">Already have an account? Login in here</a>
+	</div>
+
+</body>
+</html>
