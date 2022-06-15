@@ -1,3 +1,5 @@
 # Text Filter Web app.
-This is a Django powered Text editor and text filter web app.
-It allows users to filter certain text from a paragraph with the help of Regex python library.
+Word or character filter app
+1) This is a phrase filter app that allows user to filter certain phrases such as, numbers, nouns, special characters, etc from a large sum of data.
+2) The app is developed in Django.
+3) App also allows user registration and basic authentication.
