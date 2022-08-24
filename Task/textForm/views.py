@@ -148,7 +148,6 @@ def IPvalidatar(userinput):
                 result = 2
             elif pick >= 192 and pick <= 223:
                 result = 3
-    
     return result 
 
 def MACvalidatar(userinput):
